@@ -10,7 +10,7 @@ const CustomButton = ({title, onPress}) => {
 
 const styles = StyleSheet.create({
     loginButton: {
-        backgroundColor: 'black',
+        backgroundColor: '#1900ff',
         borderRadius: 10,
         paddingVertical: 12,
         paddingHorizontal: 20,
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'white',
         fontSize: 16,
-        fontWeight: 'bold',
+        fontFamily: 'Outfit-Bold'
     }
 });
 
