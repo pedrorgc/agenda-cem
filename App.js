@@ -1,27 +1,40 @@
 import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import Logo from './componentes/Logo';
 import CustomButton from './componentes/CustomButton';
-
-const image = require("./assets/Background1.png");
+import * as Font from 'expo-font';
+import { useEffect, useState } from 'react';
+import LoginInputs from './componentes/LoginInputs';
 
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  useEffect(() => {
+    Font.loadAsync({
+      'Outfit-Thin': require('./assets/fonts/Outfit-Thin.ttf'),
+      'Outfit-ExtraLight': require('./assets/fonts/Outfit-ExtraLight.ttf'),
+      'Outfit-Light': require('./assets/fonts/Outfit-Light.ttf'),
+      'Outfit-Regular': require('./assets/fonts/Outfit-Regular.ttf'),
+      'Outfit-Medium': require('./assets/fonts/Outfit-Medium.ttf'),
+      'Outfit-SemiBold': require('./assets/fonts/Outfit-SemiBold.ttf'),
+      'Outfit-Bold': require('./assets/fonts/Outfit-Bold.ttf'),
+      'Outfit-ExtraBold': require('./assets/fonts/Outfit-ExtraBold.ttf'),
+      'Outfit-Black': require('./assets/fonts/Outfit-Black.ttf'),
+    }).then(() => setFontsLoaded(true));
+  }, []);
+
+  if (!fontsLoaded) return null;
+
   return (
     <View style={styles.container}>
-      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-        <View style={styles.overlay}>
-          <Logo />
-          <View style={styles.form}>
-            <Text style={styles.loginText}>Faça Login Abaixo</Text>
-            <Text style={styles.text}>Usuário</Text>
-            <TextInput style={styles.input} placeholder="Digite seu usuário"/>
-            <Text style={styles.text}>Senha</Text>
-            <TextInput style={styles.input} placeholder="Digite sua senha"/>
-          </View>
+      <View style={styles.overlay}>
+        <Logo/>
+        <LoginInputs/>
+        <View style={{ marginTop: 30 }}>
           <CustomButton title="Login" onPress={() => alert("Botão pressionado")} />
         </View>
-        <StatusBar style="auto" />
-      </ImageBackground>
+      </View>
+      <StatusBar style="auto" />
     </View>
   );
 }
@@ -57,18 +70,25 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     paddingHorizontal: 10,
     borderRadius: 10,
-    backgroundColor: '#ffffff'
+    backgroundColor: '#c5c5c5',
+    fontFamily: 'Outfit-Regular',
+    shadowColor: '#002DDF',
+    shadowOffset: {width: 2, height: 3},
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+    elevation: 3
   },
 
   text:{
     fontSize: 14,
-    color: '#000'
+    color: '#000',
+    fontFamily: 'Outfit-Regular'
   },
 
   loginText:{
     marginBottom: 20,
     fontSize: 16,
     textAlign: 'center',
-    fontWeight: 'bold'
+    fontFamily: 'Outfit-Regular'
   },
 });
