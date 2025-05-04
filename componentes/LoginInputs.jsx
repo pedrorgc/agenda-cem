@@ -1,24 +1,24 @@
+import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons'; 
 import CheckBox from 'expo-checkbox';
-import { useState } from 'react';
 
-export default function LoginInputs() {
+export default function LoginInputs({ username, setUsername, password, setPassword }) {
   const [remember, setRemember] = useState(false);
 
   return (
     <View style={styles.container}>
-      {/* Input Usuário */}
       <View style={styles.inputWrapper}>
         <Feather name="user" size={20} color="#000" style={styles.icon} />
         <TextInput
           placeholder="Usuário"
           placeholderTextColor="#555"
           style={styles.input}
+          value={username}
+          onChangeText={setUsername}
         />
       </View>
 
-      {/* Input Senha */}
       <View style={styles.inputWrapper}>
         <Feather name="lock" size={20} color="#000" style={styles.icon} />
         <TextInput
@@ -26,10 +26,11 @@ export default function LoginInputs() {
           placeholderTextColor="#555"
           secureTextEntry
           style={styles.input}
+          value={password}
+          onChangeText={setPassword}
         />
       </View>
 
-      {/* Lembrar e Esqueci */}
       <View style={styles.optionsRow}>
         <View style={styles.checkboxContainer}>
           <CheckBox value={remember} onValueChange={setRemember} color="#000" />
@@ -44,8 +45,8 @@ export default function LoginInputs() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: '80%',
+  container: { 
+    width: '80%' 
   },
   inputWrapper: {
     flexDirection: 'row',
@@ -58,11 +59,9 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.3,
     shadowRadius: 6,
-    elevation: 5, 
+    elevation: 5,
   },
-  icon: {
-    marginRight: 10,
-  },
+  icon: { marginRight: 10 },
   input: {
     flex: 1,
     height: 50,
