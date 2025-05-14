@@ -24,7 +24,7 @@ export default function HomeScreen() {
         data={atividades}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <TouchableOpacity style={[styles.card, { backgroundColor: item.color }]}>
+          <TouchableOpacity style={[styles.card, { backgroundColor: item.color }]} onPress={() => console.log('Atividade selecionada')}>
             <View style={styles.iconContainer}>
               <FontAwesome6 name={item.icon} size={20} color="black" />
             </View>
@@ -39,7 +39,7 @@ export default function HomeScreen() {
       <Text style={styles.sectionTitle}>Atalhos</Text>
 
       {atalhos.map((atalho) => (
-        <TouchableOpacity key={atalho.id} style={[styles.atalhoBtn, { backgroundColor: atalho.color }]}>
+        <TouchableOpacity key={atalho.id} style={[styles.atalhoBtn, { backgroundColor: atalho.color }]} onPress={() => console.log('Atalho selecionado')}>
           <Feather name={atalho.icon} size={20} color="#fff" />
           <Text style={styles.atalhoText}>{atalho.title}</Text>
         </TouchableOpacity>

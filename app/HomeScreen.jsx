@@ -8,9 +8,9 @@ export default function HomeScreen() {
     const router = useRouter();
 
     return (
-        <View>            
-            <HelloCard />
-            <Cards />
+        <View style={styles.container}>            
+            <HelloCard/>
+            <Cards/>
             <BotaoAtalho/>
         </View>
 
@@ -19,10 +19,7 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
     container:{
-        flex: 1
+        width: '100%',
+        padding: 5
     },
-
-    overlay:{
-        flex: 1
-    }
 })
