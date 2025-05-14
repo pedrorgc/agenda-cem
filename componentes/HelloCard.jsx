@@ -29,28 +29,26 @@ const styles = StyleSheet.create ({
 
     username:{
         fontFamily: 'Outfit-Bold',
-        fontSize: 20,
+        fontSize: 22,
         textAlign: 'left'
     },
 
     description:{
         fontFamily: 'Outfit-Light',
-        fontSize: 12,
+        fontSize: 14,
         textAlign: 'justify'
     },
 
     atividades:{
         fontFamily: 'Outfit-Bold',
-        fontSize: 20,
-        textAlign: 'left',
-        marginTop: 30
+        fontSize: 22,
+        marginTop: 20
     },
 
     date:{
         fontFamily: 'Outfit-Light',
-        fontSize: 12,
-        textAlign: 'justify',
-        marginTop: 10
+        fontSize: 14,
+        marginBottom: 10
     }
 })
 

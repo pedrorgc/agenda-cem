@@ -3,98 +3,61 @@ import { FlatList, Text, TouchableOpacity, View, StyleSheet } from "react-native
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 const atividades = [
-    {
-        id: '1',
-        name: 'Basquete',
-        icon: 'basketball',
-        color: '#FFA726',
-        local: 'Centro Esportivo Municipal'
-    },
-    {
-        id: '2',
-        name: 'Futebol',
-        icon: 'futbol',
-        color: '#64B5F6',
-        local: 'Centro Esportivo Municipal'
-    },
-    {
-        id: '3',
-        name: 'Vôlei',
-        icon: 'volleyball',
-        color: '#81C784',
-        local: 'Poliesportivo do Ipê'
-    }
+  { id: '1', name: 'Basquete', icon: 'basketball', local: 'Centro Esportivo Municipal', color: '#FFE0B2' },
+  { id: '2', name: 'Futsal', icon: 'futbol', local: 'Centro Esportivo Municipal', color: '#E0E0FF' },
 ];
 
 const Cards = () => {
-    const renderItem = ({ item }) => (
-        <TouchableOpacity
-            key={item.id}
-            style={[styles.cardItem, { backgroundColor: item.color }]}
-            onPress={() => console.log(`Atividade selecionada: ${item.name}`)}
-        >
-            <FontAwesome6 name={item.icon} size={26} color="white" style={styles.icon} />
-            <View style={styles.cardContent}>
-                <Text style={styles.cardTitle}>{item.name}</Text>
-                <Text style={styles.cardLocation}>{item.local}</Text>
+  return (
+    <View>
+      <FlatList
+        data={atividades}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={[styles.card, { backgroundColor: item.color }]}
+            onPress={() => console.log('Atividade selecionada')}
+          >
+            <View style={styles.iconContainer}>
+              <FontAwesome6 name={item.icon} size={20} color="black" />
             </View>
-        </TouchableOpacity>
-    );
-
-    return (
-        <View style={styles.container}>
-            <FlatList
-                data={atividades}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-                contentContainerStyle={styles.listContent}
-            />
-        </View>
-    );
+            <View>
+              <Text style={styles.activityTitle}>{item.name}</Text>
+              <Text style={styles.activityLocal}>{item.local}</Text>
+            </View>
+          </TouchableOpacity>
+        )}
+      />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F5F5F5',
-    },
-    listContent: {
-        padding: 20,
-        alignItems: 'center',
-    },
-    cardItem: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 16,
-        borderRadius: 16,
-        padding: 16,
-        width: '100%',
-        maxWidth: 350,
-        shadowColor: '#000',
-        shadowOpacity: 0.1,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 4,
-        elevation: 3,
-    },
-    icon: {
-        marginRight: 14,
-        color: 'black',
-    },
-    cardContent: {
-        flex: 1,
-    },
-    cardTitle: {
-        textAlign: 'center',
-        fontSize: 18,
-        fontFamily: 'Outfit-Regular',
-        color: '#000000',
-        marginBottom: 4,
-    },
-    cardLocation: {
-        fontFamily: 'Outfit-Light',
-        fontSize: 14,
-        color: '#000000',
-    },
+  card: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 12,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    elevation: 2,
+  },
+  iconContainer: {
+    backgroundColor: '#fff5',
+    padding: 10,
+    borderRadius: 12,
+    marginRight: 12,
+  },
+  activityTitle: {
+    fontFamily: 'Outfit-Bold',
+    fontSize: 18,
+  },
+  activityLocal: {
+    fontFamily: 'Outfit-Regular',
+    fontSize: 14,
+  },
 });
 
 export default Cards;
