@@ -29,16 +29,24 @@ export default function Layout() {
           options={{
             drawerLabel: 'Home',
             title: 'Painel Principal',
-  
+            // drawerPosition: 'right',
+            // drawerIcon: ''
           }}
         />
         <Drawer.Screen
-          name="LoginScreen" // This is the name of the page and must match the url from root
+          name="index" // This is the name of the page and must match the url from root
           options={{
             drawerLabel: 'Login',
             title: 'Login',
-            headerShown: false,
+            // headerShown: false,
             drawerItemStyle: { display: 'flex' }, // Hide the login screen from the drawer menu
+          }}
+        />
+        <Drawer.Screen
+          name='CadastroAtividades'
+          options={{
+            drawerLabel: 'Cadastrar Atividades',
+            title: 'Cadastrar Atividades'
           }}
         />
       </Drawer>
